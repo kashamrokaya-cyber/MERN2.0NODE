@@ -16,7 +16,11 @@ const bookSchema = new Schema({
     },
     publishedAt: {
         type: String
+    },
+    image:{
+        type:String
     }
+
 })
 
 
