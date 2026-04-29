@@ -29,28 +29,28 @@ app.post('/book', upload.single('image'), async (req, res) => {
     // try {
 
     let filename;
-   
+
     if (!req.file) {
         filename = "https://i.pinimg.com/236x/48/99/c9/4899c9300c2630102f0e13c7b25a657d.jpg"
     } else {
         filename = "http://localhost:3000/" + req.file.filename;
-        
+
     }
-        const { bookName, authorName, bookPrice, isbnNumber, publishedAt } = req.body;
-        await Book.create({
-            bookName: bookName,
-            authorName: authorName,
-            bookPrice: bookPrice,
-            isbnNumber: isbnNumber,
-            publishedAt: publishedAt,
-            image: filename
-        })
-        res.status(201).json({
-            message: "Book is successfully created"
-        })
+    const { bookName, authorName, bookPrice, isbnNumber, publishedAt } = req.body;
+    await Book.create({
+        bookName: bookName,
+        authorName: authorName,
+        bookPrice: bookPrice,
+        isbnNumber: isbnNumber,
+        publishedAt: publishedAt,
+        image: filename
+    })
+    res.status(201).json({
+        message: "Book is successfully created"
+    })
     // } catch (error) {
     //     console.log(error);
-        
+
     //     if (req.file) {
     //         const filePath = path.join("storage", req.file.filename)
     //         if (fs.existsSync(filePath)) {
@@ -60,7 +60,7 @@ app.post('/book', upload.single('image'), async (req, res) => {
     //     res.status(400).json({
     //         message: error.message
     //     })
-    
+
 
 })
 
@@ -157,8 +157,9 @@ app.patch('/book/:id', upload.single('image'), async (req, res) => {
 
 
 app.use(express.static("./storage/"))
-app.listen(3000, () => {
-    console.log("App is listening...", 3000)
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+    console.log("App is listening...", PORT)
 })
 
 

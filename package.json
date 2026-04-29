@@ -4,13 +4,15 @@
   "description": "this is mern2.0 stack",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "starts": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kushal rokaya",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.4.1",
     "multer": "^2.1.1",
