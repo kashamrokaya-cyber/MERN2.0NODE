@@ -4,9 +4,10 @@ const bookSchema = new Schema({
     bookName: {
         type: String,
         unique: true
+
     },
     bookPrice: {
-        type: String
+        type: Number
     },
     isbnNumber: {
         type: Number
@@ -17,8 +18,9 @@ const bookSchema = new Schema({
     publishedAt: {
         type: String
     },
-    image:{
-        type:String
+    image: {
+        type: String
+
     }
 
 })
