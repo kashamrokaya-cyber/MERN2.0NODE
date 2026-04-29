@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const ConnectionString = require('./database')
+const ConnectionString = require('./database/index.js')
 app.use(express.json());
 const Book = require('./Model/bookModel')
 const path = require('path')
