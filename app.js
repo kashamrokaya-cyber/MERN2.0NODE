@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const ConnectionString = require('./database/index.js')
+require('dotenv').config();
+// const ConnectionString = require('./database/index.js')
 app.use(express.json());
 const Book = require('./Model/bookModel')
 const path = require('path')
@@ -10,10 +11,46 @@ const upload = multer({ storage: storage })
 const cors = require('cors');
 
 
+
+// const mongoose = require('mongoose')
+
+// // const Connection="mongodb://localhost:27017/book"
+// const Connection = "process.env.MONGO_URI"
+
+
+// async function ConnectionString() {
+//     await mongoose.connect(Connection);
+//     console.log("Connected To Db successfully...")
+// }
+
+
+
+
+
+
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("DB Connected"))
+  .catch(err => console.log(err));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.use(cors({
     origin: '*'
 }))
-ConnectionString();
+// ConnectionString();
 
 //fetch all book
 app.get('/books', async (req, res) => {
@@ -157,9 +194,9 @@ app.patch('/book/:id', upload.single('image'), async (req, res) => {
 
 
 app.use(express.static("./storage/"))
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
-    console.log("App is listening...", PORT)
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log("App is listening...", process.env.PORT)
 })
 
 
